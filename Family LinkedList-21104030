@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+// declared a Node of a doubly linked list
+class Node{
+public:
+    int age;
+    string name;
+    // previous and next pointer to access previous and next node 
+    Node* prev;
+    Node* next;
+    // declared a parameterised contructor 
+    Node(string s,int a){
+        age = a;
+        name = s;
+        prev = NULL;
+        next = NULL;
+    }
+};
+// made a function to push back elements in a linked list
+void pushBack(Node*& head,Node*& curr){
+    if(head==NULL){
+        head = curr;
+        return;
+    }
+    Node* temp = head;
+    while(temp->next!=NULL){
+        temp = temp->next;
+    }
+    temp->next = curr;
+    curr->prev = temp;
+    return;
+}
+// made a function to print entire doubly linked list
+// "-->" has been used to show the traversal of generation from high age to low
+void printFamily(Node* head){
+    while(head!=NULL){
+        cout<<head->name<<" "<<head->age;
+        cout<<"-->";
+        head = head->next;
+    }
+    // NULL means no furthur offsprings 
+    cout<<"NULL";
+    return;
+}
+int main(){
+    // declared a pointer naming "head" pointing to NULL initially 
+    Node* head = NULL;
+    cout<<"number of family members: ";
+    int n;cin>>n;
+    for(int i=0;i<n;i++){
+        int a;
+        string s;
+        cout<<"Enter name: ";
+        cin>>s;
+        cout<<"Enter age: ";
+        cin>>a;
+        Node* curr = new Node(s,a);
+        pushBack(head,curr);
+    }
+    // function call to print the list
+    printFamily(head);
+    return 0;
+}
