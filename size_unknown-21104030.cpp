@@ -7,9 +7,12 @@
 // method-1
 // we can find size of array using inbulit function i.e
 // int arr[]={1,2,3,4,6,7,8,9,2,10,11};
-// int size=my_sizeof(arr)/my_sizeof(arr[0]);
+// int size=sizeof(arr)/sizeof(arr[0]);
+// now since we have got the size of array we can specify the range for iteration in while loop 
 
 // method-2
+// in this method we will initialise high variable by 1 and till the time element will not be found we will twice its value 
+// for better understanding i have given the code below;
 #include <bits/stdc++.h>
 using namespace std;
 
