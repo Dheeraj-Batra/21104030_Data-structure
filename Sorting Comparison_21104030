@@ -1,0 +1,79 @@
+// Name=Dheeraj Batra ; Sid = 21104030 ; Branch = EE
+// Q- COMPARE BUBBLE SORT AND SELECTION SORT?
+
+// ----------------------- BUBBLE SORT  -----------------------
+// IDEA = if arr[i]>arr[i+1] swap them.To place the element in their respective postition,we have to do the following operations N-1 times where N is size of array.
+
+// Repeatedly swap 2 adjacent elements if they are in wrong order
+void bublesort(int arr[], int n){
+    for (int i = 0; i < n - 1; i++){
+        // Last i elements are already in place
+        for (int j = 0; j < n - i - 1; j++){
+            // compare two adjacent elements
+            if (arr[j] > arr[j + 1]){
+                // swapping elements if elements
+                // are not in the intended order
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+// Time Complexity: O(N^2)
+// Auxiliary Space: O(1)
+
+1) No. of Comparisons :-
+In this sorting technique the largest element bubbles up towards the last place. Sorting takes place by stepping through all data items one-by-one in pairs and 
+comparing adjacent data items and swapping each order that is out of order
+In Bubble sort,n-1 comparisons will be done in 1st pass,n-2 in 2nd pass , n-3 in 3rd pass and so on.So the total number of comparisons made will be
+(n-1)+(n-2)+(n-3)+....+3+2+1 == O(N^2)
+
+In i-th pass of Bubble Sort (ascending order), last (i-1) elements are already sorted,
+i-th largest element is placed at (N-i)-th position, i.e. i-th last position
+
+2) No. of Swaps :-
+Best Case = Sorted array is given as input Or almost all elements are in proper place. [ O(N) ]. O(1) swaps.
+Worst Case: Reversely sorted / Very few elements are in proper place. [ O(N2) ] . O(N2) swaps.
+Average Case: [ O(N2) ] . O(N2) swaps.
+it is a simple sorting approach and also a stable sort
+
+3) It is a inplace sorting algorithm  which modifies the original array's elements to sort the given array.
+
+
+// ----------------------- SELECTION SORT-----------------------
+// IDEA = The inner loop selects the minimum element in the unsorted array and places the elements in increasing order.
+
+void selectionsort(int arr[], int size){
+    // One by one move boundary of unsorted subarray
+    for (int i = 0; i < size - 1; i++){
+        // Find the minimum element in unsorted array
+        for (int j = i + 1; j < size; j++){
+            // Swap the found minimum element with the first element
+            if (arr[j] < arr[i]){
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
+}
+// Time Complexity: O(N^2)
+// Auxiliary Space: O(1)
+
+1) no of comparasions
+Selection sort selects i-th smallest element and places at i-th position.This algorithm divides the array into two parts: sorted (left) and unsorted (right) subarray.
+It selects the smallest element from unsorted subarray and places in the first position of that subarray (ascending order).
+It repeatedly selects the next smallest element.
+For N elements it takes 1+2+3+…+N-1 = (N-1)N/2 comparisons
+
+2) swaps
+Best Case [ O(N2) ]. And O(1) swaps.
+Worst Case: Reversely sorted, and when the inner loop makes a maximum comparison. [ O(N2) ] . Also, O(N) swaps.
+Average Case: [ O(N2) ] . Also O(N) swaps.
+Selection sort performs (at most) n – 1 swaps between data elements, while the bubble sort swaps n * (n – 1) / 2 elements in the worst case (when the list is sorted in reverse order).
+
+3) it can be in-place as well as out-place algorithm
+In-Place sort = Selection sort can be implemented without using extra space,by just modifying the given input array.The smallest element can be placed in beginning of unsorted array
+Out-place sort = Selection sort can also be implemented by making an extra array, finding the minimum from given input array and placing that element in new array
+this way selection sort can be implemented by both in-place and out-place algorithm
